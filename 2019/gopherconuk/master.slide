@@ -1,0 +1,114 @@
+Go - The COW way
+December 2019
+
+Horacio López
+horacio.lopez@mercadolibre.com
+
+Mauro Reverter
+mauro.reverter@mercadolibre.com
+
+* Agenda 
+
+Day 1
+
+- Brief overview GopherCon UK
+- I am a Java dev, could I be a GO dev?
+- How do I organize my project? (the COW way)
+- Workshop: Learning GO using techniques
+
+Day 2
+
+- GopherCon UK in detail
+- Workshop: Concurrency
+
+* Agenda - Day 1
+
+*ToDo*
+
+- Brief overview GopherCon UK
+- I am a Java dev, could I be a GO dev?
+- How do I organize my project? (the COW way)
+- Workshop: Learning GO using techniques
+
+*Done*
+
+* Brief overview GopherCon UK
+.image ./images/logo.png
+
+* Agenda - Day 1
+
+*ToDo*
+
+- I am a Java dev, could I be a GO dev?
+- How do I organize my project? (the COW way)
+- Workshop: Learning GO using techniques
+
+*Done*
+
+- Brief overview GopherCon UK
+
+* I am a Java dev, could I be a GO dev?
+.image ./images/gopher-java.png
+
+* Is GO an Object Oriented Language?
+
+- Encapsulation (possible on package level in Go)
+- Composition (possible through embedding in Go)
+- Polymorphism (possible through Interface satisfaction in Go)
+- Inheritance (not supported, considered a bad practice)
+
+* Is GO an Object Oriented Language?
+
+Encapsulation
+
+.code java2go.go /START 1/,/END 1/
+
+* Is GO an Object Oriented Language?
+
+Composition (embedding)
+
+.code java2go.go /START 2/,/END 2/
+
+(cont...)
+
+* Is GO an Object Oriented Language?
+
+Embedding is not sub-classing
+
+.play java2go.go /START 2.1/,/END 2.1/
+
+* Is GO an Object Oriented Language?
+
+Polymorphism
+
+.code java2go.go /START 4/,/END 4/
+
+Above, r.Read will be dispatched to (*Buffer).Read.
+
+* The go type system for newcomers
+.image ./images/newcomer.png
+
+* Embedding is not inheritance
+
+Consider the following struct:
+
+.code java2go.go /START 3.1/,/END 3.1/
+
+Then, File objects will directly have access to sync.Mutex methods:
+
+.code java2go.go /START 3.2/,/END 3.2/
+
+This is not sub-classing!!
+
+
+
+
+* Inspired by
+
+.link https://medium.com/gophersland/gopher-vs-object-oriented-golang-4fa62b88c701 Gopher Vs Object Oriented Golang
+.link https://rakyll.org/typesystem/ Go type for newcomers
+
+
+
+
+
