@@ -48,7 +48,7 @@ type Dog struct {
 	Animal
 }
 
-func main() {
+func example() {
 	var a Animal
 	a = Dog{}
 }
