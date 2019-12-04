@@ -40,21 +40,6 @@ type ReadWriter interface {
 
 // END 2 OMIT
 
-// START 2.1 OMIT
-
-type Animal struct{}
-
-type Dog struct {
-	Animal
-}
-
-func example() {
-	var a Animal
-	a = Dog{}
-}
-
-// END 2.1 OMIT
-
 // START 3.1 OMIT
 
 type File struct {

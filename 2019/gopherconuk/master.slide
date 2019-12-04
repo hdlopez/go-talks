@@ -75,7 +75,7 @@ Composition (embedding)
 
 Embedding is not sub-classing
 
-.play java2go.go /START 2.1/,/END 2.1/
+.play embedding.go
 
 * Is GO an Object Oriented Language?
 
