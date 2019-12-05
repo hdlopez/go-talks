@@ -1,4 +1,4 @@
-package gopherconuk
+package main
 
 type Animal struct{}
 
