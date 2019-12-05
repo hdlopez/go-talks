@@ -57,7 +57,7 @@ Day 2
 
 - Is GO an Object Oriented Language?
 - The go type system for newcomers
-- Code Convetions
+- Code Conventions
 
 *Done*
 
@@ -114,7 +114,7 @@ Above, r.Read will be dispatched to (*Buffer).Read.
 *ToDo*
 
 - The go type system for newcomers
-- Code Convetions
+- Code Conventions
 
 *Done*
 
@@ -173,7 +173,7 @@ Golang 2 has generics!!!
 
 *ToDo*
 
-- Code Convetions
+- Code Conventions
 
 *Done*
 
@@ -322,7 +322,7 @@ When an interface includes multiple methods, choose a name that accurately descr
 
 - Is GO an Object Oriented Language?
 - The go type system for newcomers
-- Code Convetions
+- Code Conventions
 
 
 * Agenda - Day 1
