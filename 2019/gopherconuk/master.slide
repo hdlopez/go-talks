@@ -352,7 +352,7 @@ When an interface includes multiple methods, choose a name that accurately descr
    main.go   
 
 
-* Ejemplo: Controller
+* Example: Controller
 
 .code naming.go /START 2/,/END 2/
 
@@ -367,6 +367,8 @@ When an interface includes multiple methods, choose a name that accurately descr
 - Brief overview GopherCon UK
 - I am a Java dev, could I be a GO dev?
 - How do I organize my project? (the COW way)
+
+* Workshop: Learning GO using techniques
 
 * References
 
