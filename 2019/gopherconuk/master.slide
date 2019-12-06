@@ -370,6 +370,85 @@ When an interface includes multiple methods, choose a name that accurately descr
 
 * Workshop: Learning GO using techniques
 
+* Go - The COW way (Day 2)
+
+* Agenda - Day 2
+
+- GopherCon UK in detail
+- Workshop: Working with Configs API 
+
+* GopherCon UK in detail
+.image ./images/logo.png
+
+* Workshop: Working with Configs API 
+
+* Getting Started
+
+- Run the application
+   go run main.go
+
+- Debug the application
+
+   ## Install delve
+   go get -u github.com/go-delve/delve/cmd/dlv
+
+- Save and Get any site config. Understand what's happening when we hit the same config more than once
+
+- Save and Get user config.
+
+(cont...)
+
+* Challenge #1
+
+- Add new site config "second_factor" to enable/disable the second factor on payment creations (on COW). You can use the "status" property to handle enable/disable feature.
+
+Example:
+
+   {
+      "id": "site_configurations",
+      "date_created": "2017-02-07T10:44:56-04:00",
+      "last_modified": "1969-12-31T20:00:00-04:00",
+      "name": "Site configurations",
+      "configuration_name": "second_factor",
+      "site_id": "MLM",
+      "status": "inactive",
+      "value1": "",
+      "value2": "",
+      "value3": ""
+   }
+
+* Challenge #2
+
+- Add user config "use_default_appid" to change the appid which will be used to payment creations (on COW). If the user config is active, checkout will use the default appid (instead of the merchant id)
+
+Example:
+
+   {
+      "id": "use_default_appid",
+      "date_created": "2014-07-24T15:27:42-04:00",
+      "last_modified": "2014-11-18T15:47:55-04:00",
+      "name": "Use default appid",
+      "status": "active"
+   }
+
+* Challenge #3 (Advanced)
+
+- Add a brand new site config to exclude payment methods or payment types for a whole site. The name could be "payment_methods_exclusion"
+
+Example:
+
+   {
+      "id": "site_configurations",
+      "date_created": "2017-02-07T10:44:56-04:00",
+      "last_modified": "1969-12-31T20:00:00-04:00",
+      "name": "Payment Methods exclusion configuration",
+      "configuration_name": "payment_methods_exclusion",
+      "site_id": "MLM",
+      "excluded_payment_methods": ["visa"],
+      "excluded_payment_types": ["ticket", "bank_transfer"]
+   }
+
+
 * References
 
 .link https://medium.com/gophersland/gopher-vs-object-oriented-golang-4fa62b88c701 Gopher Vs Object Oriented Golang
