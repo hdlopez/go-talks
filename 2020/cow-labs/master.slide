@@ -69,16 +69,12 @@ Same as
 
 Above, r.Read will be dispatched to (*Buffer).Read.
 
->* Java dev questions
+* QUESTIONS CHECKPOINT
 
 - Is GO an Object Oriented Language? 
 Answer: Kind of
 
--
-
 - How is the go type system?
-
--
 
 - What about code conventions?
 
@@ -135,18 +131,13 @@ Go doesn’t have generics until version 2
 Golang 2 has generics!!!
 
 
-* Java dev questions
+* QUESTIONS CHECKPOINT
 
 - Is GO an Object Oriented Language? 
 Answer: Kind of
 
--
-
 - How is the go type system?
 Answer: Strictly different
-
--
-
 
 - What about code conventions?
 
@@ -283,18 +274,13 @@ When an interface includes multiple methods, choose a name that accurately descr
 - Use your judgment.
 
 
-* Java dev questions
+* QUESTIONS CHECKPOINT
 
 - Is GO an Object Oriented Language? 
 Answer: Kind of
 
--
-
 - How is the go type system?
 Answer: Strictly different
-
--
-
 
 - What about code conventions?
 
