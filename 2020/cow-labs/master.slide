@@ -1,0 +1,319 @@
+Can I code in GO like in Java?
+November 2020
+
+Horacio López
+horacio.lopez@mercadolibre.com
+
+* Can I code in GO like in Java?
+
+No, you can't :). But... 
+
+.image ./images/gopher-java.png
+
+* Can I code in GO like in Java?
+
+Go dev: No.
+
+Java dev: Ok, so ...
+
+I have some questions:
+
+- Is GO an Object Oriented Language?
+- How is the go type system?
+- What about code conventions?
+
+Go dev: Ok, let's review them!
+
+* Is GO an Object Oriented Language?
+
+- Classes (possible through structs in GO)
+- Encapsulation (possible on package level in Go)
+- Composition (possible through embedding in Go)
+- Polymorphism (possible through Interface satisfaction in Go)
+- Inheritance (not supported, considered a bad practice)
+
+* Classes
+
+How does a Struct look like?
+
+.code java2go.go /START 8.1/,/END 8.1/
+
+Can such a Class (Struct) also have methods? Sure.
+
+.code java2go.go /START 8.2/,/END 8.2/   
+
+Same as 
+
+.code java2go.go /START 8.3/,/END 8.3/   
+
+* Encapsulation
+
+.code java2go.go /START 1/,/END 1/
+
+
+* Composition (embedding)
+
+.code java2go.go /START 2/,/END 2/
+
+(cont...)
+
+
+* Embedding is not sub-classing
+
+.play embedding.go
+
+
+* Polymorphism
+
+.code java2go.go /START 4/,/END 4/
+
+Above, r.Read will be dispatched to (*Buffer).Read.
+
+>* Java dev questions
+
+- Is GO an Object Oriented Language? 
+Answer: Kind of
+
+-
+
+- How is the go type system?
+
+-
+
+- What about code conventions?
+
+
+* How is the go type system?
+
+The go type system for newcomers
+
+.image ./images/newcomer.png
+
+* Embedding is not inheritance
+
+Consider the following struct:
+
+.code java2go.go /START 3.1/,/END 3.1/
+
+Then, File objects will directly have access to sync.Mutex methods:
+
+.code java2go.go /START 3.2/,/END 3.2/
+
+This is not sub-classing!!
+
+* No explicit interface implementations
+
+.code java2go.go /5/,/END 5/
+
+- Culture of not introducing new interfaces (reduces the number of similar looking interfaces)
+
+.link https://gobyexample.com/interfaces https://gobyexample.com/interfaces
+
+* No constructors
+
+- Go doesn’t have constructors
+- Go has a philosophy to use zero-value to represent the default
+
+Examples:
+
+.code java2go.go /START 6/,/END 6/
+
+* Nil receivers
+
+Below, event logging will be a noop for the nil values.
+
+.code java2go.go /START 7.1/,/END 7.1/
+
+Then user can use the nil value for the noop behavior:
+
+.code java2go.go /START 7.2/,/END 7.2/
+
+* No generics (Golang 1.X)
+
+Go doesn’t have generics until version 2
+
+Golang 2 has generics!!!
+
+
+* Java dev questions
+
+- Is GO an Object Oriented Language? 
+Answer: Kind of
+
+-
+
+- How is the go type system?
+Answer: Strictly different
+
+-
+
+
+- What about code conventions?
+
+
+* Code Conventions
+
+.image ./images/gopheryesno.png
+
+* Package organization
+
+- Use multiple lines
+
+   - doc.go       // package documentation
+   - headers.go   // HTTP headers types and code
+   - cookies.go   // HTTP cookies types and code
+   - http.go      // HTTP client implementation, request and response types, etc.
+
+(cont..)
+
+* Package organization
+
+- Organize by responsability
+
+   package models // DON'T DO IT!!!
+   
+   // User represents a user in the system.
+   type User struct {...}
+
+Instead 
+
+   package mngtservice
+
+   // User represents a user in the system.
+   type User struct {...}
+
+   func UsersByQuery(ctx context.Context, q *Query) ([]*User, *Iterator, error)
+
+(cont..)
+
+* Package organization
+
+- Optimize for godoc
+   godoc -http=<hostport>
+- Don’t export from main
+
+* Naming
+
+A good name is:
+
+- Consistent (easy to guess),
+- Short (easy to type),
+- Accurate (easy to understand).
+
+* Package naming
+
+- Lowercase only
+- Short, but representative names
+   import "pkgs.org/common" // DON'T!!!
+If you cannot avoid a bad name, it is very likely that there is a problem with your overall structure and code organization.
+
+- No plurals
+   package httputils  // DON'T DO IT, USE SINGULAR FORM!!
+- Documentation
+   // Package ioutil implements some I/O utility functions.
+   package ioutil 
+
+* Function naming
+
+DON'T
+
+   user.GetUser() 
+
+DO
+
+   user.Get()
+
+* Variables naming
+
+BAD
+
+    func RuneCount(buffer []byte) int {
+        runeCount := 0
+        for index := 0; index < len(buffer); {
+            if buffer[index] < RuneSelf {
+                index++
+            } else {
+                _, size := DecodeRune(buffer[index:])
+                index += size
+            }
+            runeCount++
+        }
+        return runeCount
+    }
+
+* Variables naming
+
+GOOD
+
+    func RuneCount(b []byte) int {
+        count := 0
+        for i := 0; i < len(b); {
+            if b[i] < RuneSelf {
+                i++
+            } else {
+                _, n := DecodeRune(b[i:])
+                i += n
+            }
+            count++
+        }
+        return count
+    }
+
+* Interface Naming
+
+Interfaces that specify just one method are usually just that function name with 'er' appended to it.
+
+    type Reader interface {
+        Read(p []byte) (n int, err error)
+    }
+Sometimes the result isn't correct English (but they do it anyway)
+
+    type Execer interface {
+        Exec(query string, args []Value) (Result, error)
+    }
+
+When an interface includes multiple methods, choose a name that accurately describes its purpose (examples: net.Conn, http.ResponseWriter, io.ReadWriter).
+
+.link https://golang.org/doc/effective_go.html#interface-names Effective go, interface naming
+
+* Conclusion about naming
+
+- Use short names.
+- Think about context.
+- Use your judgment.
+
+
+* Java dev questions
+
+- Is GO an Object Oriented Language? 
+Answer: Kind of
+
+-
+
+- How is the go type system?
+Answer: Strictly different
+
+-
+
+
+- What about code conventions?
+
+Answer: short names, think about context, use your judgment.
+
+
+* That's all folks
+
+.image ./images/gopher-exhausted.png
+
+
+* References
+
+.link https://medium.com/gophersland/gopher-vs-object-oriented-golang-4fa62b88c701 Gopher Vs Object Oriented Golang
+.link https://rakyll.org/typesystem/ Go type for newcomers
+.link https://gobyexample.com/ Go by example
+.link https://talks.golang.org/2014/names.slide What's a name?
+
+
+
+
+
