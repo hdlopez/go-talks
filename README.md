@@ -16,4 +16,4 @@ If your GitHub repository is public, it is also available at https://go-talks.ap
 My presentations:
 
 * Workshop in Parana -  https://go-talks.appspot.com/github.com/hdlopez/go-talks/2019/gopherconuk/master.slide#1 
-* Workshop in Buenos Aires - https://go-talks.appspot.com/github.com/hdlopez/go-talks/2020/cow-labs/master.slide#1
+* Workshop in Buenos Aires - https://go-talks.appspot.com/github.com/hdlopez/go-talks/2020/workshop-op/master.slide#1
